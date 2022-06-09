@@ -12,16 +12,20 @@ function App() {
   const [job,setJob] = useState("");
   const [data,setData] = useState(ContactData);
   const HandleSubmit = () =>{
-    
     setData((item)=>([...item,{id:data.length+1,name:name,email:email,job:job,contact:contact}]));
-   setName('');
-   setEmail('');
-   setContact('');
-   setJob('');
+    setName('');
+    setEmail('');
+    setContact('');
+    setJob('');
     handleClose();
     
     
   }
+   const handleDelete = (id)=>{
+      let newArray = data.filter((item) => item.id !== id);
+      setData(newArray);
+   }
+
   const handleOpen = () =>{
     setOpen(true);
   }
@@ -48,7 +52,7 @@ function App() {
            
          </DialogActions>
        </Dialog>
-    <Content data={data}/>
+    <Content data={data} handleDelete={(id) => handleDelete(id)}/>
   
     </>
    

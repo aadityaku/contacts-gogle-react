@@ -3,7 +3,11 @@ import ContactList from "./ContactList";
 //import { Container } from "@mui/system"
 import Side from "./Side";
 
-const Content = ({data}) =>{
+const Content = (props) =>{
+    const handleDelete = (id) =>{
+         props.handleDelete(id);
+         
+    }
     return(
         
             <Grid container spacing={1}>
@@ -12,7 +16,7 @@ const Content = ({data}) =>{
                 </Grid>
                 <Grid item  lg={9.7}>
                     
-                    <ContactList data={data}/>
+                    <ContactList data={props.data} handleDelete={(id) => handleDelete(id)}/>
                 </Grid>
             </Grid>
         
