@@ -8,13 +8,17 @@ import { useState } from "react";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AppsIcon from '@mui/icons-material/Apps';
-export default function Header(){
+export default function Header(props){
     const [head,setHead] = useState(false);
+    const setIcon = () =>{
+        props.handleIcon();
+    
+    }
     return (
         <AppBar position="sticky" sx={{backgroundColor:"white"}} elevation="1" >
             <Toolbar>
-                <IconButton  size="large" edge="start"  aria-label="open drawer"  >
-                    <MenuIcon/>
+                <IconButton  size="large" edge="start"  aria-label="open drawer" onClick={()=>setIcon(true)} >
+                    <MenuIcon />
                 
                 </IconButton>
                 <Box  component="img" sx={{height: 40.5,marginLeft:1,width: 40.5,maxHeight: { xs: 233, md: 167 },maxWidth: { xs: 350, md: 250 },}}

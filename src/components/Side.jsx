@@ -14,9 +14,9 @@ import PrintIcon from '@mui/icons-material/Print';
 import BackupOutlinedIcon from '@mui/icons-material/BackupOutlined';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-const Side = () => {
+const Side = (props) => {
   
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
     const [select,setSelect] = useState(false);
     
     const handleListItemClick = (event, index) => {
@@ -30,6 +30,7 @@ const Side = () => {
             setSelectedIndex(index);
             setSelect(false);
     }
+   
     return (
       <Box sx={{ maxWidth: 350, bgcolor: 'background.paper' }} position="fixed">
         <List component="nav" aria-label="main mailbox folders">

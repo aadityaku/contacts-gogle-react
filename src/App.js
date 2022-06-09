@@ -11,6 +11,7 @@ function App() {
   const [contact,setContact] = useState("");
   const [job,setJob] = useState("");
   const [data,setData] = useState(ContactData);
+  const [icon,setIcon] = useState(true);
   const HandleSubmit = () =>{
     setData((item)=>([...item,{id:data.length+1,name:name,email:email,job:job,contact:contact}]));
     setName('');
@@ -29,12 +30,25 @@ function App() {
   const handleOpen = () =>{
     setOpen(true);
   }
+  const handleIcon = () =>{
+    if(icon === false){
+      setIcon(true)
+      console.log(icon);
+    }
+    else{
+      setIcon(false)
+      console.log(icon);
+    }
+   
+    
+  }
+  
   const handleClose = () =>{
     setOpen(false);
   }
   return (
     <>
-     <Header/>
+     <Header handleIcon={()=>handleIcon()}/>
        <Fab onClick={handleOpen} color="primary" aria-label="add" sx={{position:"absolute",right:40,bottom:20}}>
           <AddIcon />
        </Fab>
@@ -52,7 +66,7 @@ function App() {
            
          </DialogActions>
        </Dialog>
-    <Content data={data} handleDelete={(id) => handleDelete(id)}/>
+    <Content data={data} handleDelete={(id) => handleDelete(id)} handleSide={icon}/>
   
     </>
    

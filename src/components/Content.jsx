@@ -8,16 +8,37 @@ const Content = (props) =>{
          props.handleDelete(id);
          
     }
+    // const handleSide = () =>{
+    //     props.handleSide();
+    // }
     return(
         
             <Grid container spacing={1}>
-                <Grid item  lg={2.3}>
-                  <Side/>
-                </Grid>
-                <Grid item  lg={9.7}>
+                 
+                    {
+                       
+                        props.handleSide && 
+                        <>
+                        <Grid item  lg={2.3}> 
+                            <Side/>
+                         </Grid>
+                        <Grid item  lg={9.7}>
                     
-                    <ContactList data={props.data} handleDelete={(id) => handleDelete(id)}/>
-                </Grid>
+                          <ContactList data={props.data} handleDelete={(id) => handleDelete(id)}/>
+                        </Grid>
+                        </>
+                        
+                        
+                    }
+                 
+               
+                 {
+                    !props.handleSide &&
+                    <Grid item  lg={12}>
+                    
+                        <ContactList data={props.data} handleDelete={(id) => handleDelete(id)}/>
+                    </Grid>
+                 }
             </Grid>
         
     )
