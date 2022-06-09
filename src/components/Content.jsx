@@ -8,9 +8,10 @@ const Content = (props) =>{
          props.handleDelete(id);
          
     }
-    // const handleSide = () =>{
-    //     props.handleSide();
-    // }
+    const handleModel = () =>{
+        props.handleModel();
+        
+    }
     return(
         
             <Grid container spacing={1}>
@@ -20,7 +21,7 @@ const Content = (props) =>{
                         props.handleSide && 
                         <>
                         <Grid item  lg={2.3}> 
-                            <Side/>
+                            <Side handleModel={() => handleModel()}/>
                          </Grid>
                         <Grid item  lg={9.7}>
                     

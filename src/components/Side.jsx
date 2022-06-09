@@ -21,6 +21,7 @@ const Side = (props) => {
     
     const handleListItemClick = (event, index) => {
       setSelectedIndex(index);
+      props.handleModel();
     };
     const arro = (event,index) =>{
             setSelectedIndex(index);

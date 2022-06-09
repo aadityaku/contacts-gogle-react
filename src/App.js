@@ -66,7 +66,7 @@ function App() {
            
          </DialogActions>
        </Dialog>
-    <Content data={data} handleDelete={(id) => handleDelete(id)} handleSide={icon}/>
+    <Content data={data} handleDelete={(id) => handleDelete(id)} handleSide={icon} handleModel={() => handleOpen()}/>
   
     </>
    
