@@ -1,8 +1,10 @@
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
+
 const TableData = (props) =>{
     const handleRemove = (id) =>{
+        
         props.handleRemove(id);
         
     }
@@ -20,11 +22,14 @@ const TableData = (props) =>{
 }
 
 const ContactList = (props) =>{
-    // const [data,setData] = useState(props.data);
+    
     const handleRemove = (id) =>{
-         props.handleDelete(id);
         
+         props.handleDelete(id);
+         
     }
+ 
+    
     return(
         <TableContainer sx={{ maxHeight: 675 }}>
         <Table stickyHeader>
@@ -39,10 +44,20 @@ const ContactList = (props) =>{
             </TableHead>
             <TableBody>
                  {
-                     props.data.map((value,index)=>(
-                         <TableData key={index} handleRemove={(id) => handleRemove(id)} id={value.id} name={value.name} contact={value.contact} email={value.email} job={value.job}/>
-                     ))
+                    
+                   props.data.filter((value) => {
+                    if(props.search === " "){
+                        return value;
+                    }
+                    else if (value.name.toLowerCase().includes(props.search.toLowerCase())){
+                        return value;
+                    }
+                   }).map((value,index)=>(
+                            <TableData key={index} handleRemove={(id) => handleRemove(id)} id={value.id} name={value.name} contact={value.contact} email={value.email} job={value.job}/>
+                        ))
+                
                  }
+                
             </TableBody>
             
         </Table>

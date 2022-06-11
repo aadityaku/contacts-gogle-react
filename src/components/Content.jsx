@@ -5,6 +5,7 @@ import Side from "./Side";
 
 const Content = (props) =>{
     const handleDelete = (id) =>{
+        
          props.handleDelete(id);
          
     }
@@ -12,9 +13,10 @@ const Content = (props) =>{
         props.handleModel();
         
     }
+    // console.log(props.search);
     return(
         
-            <Grid container spacing={1}>
+            <Grid container spacing={1} >
                  
                     {
                        
@@ -25,7 +27,7 @@ const Content = (props) =>{
                          </Grid>
                         <Grid item  lg={9.7}>
                     
-                          <ContactList data={props.data} handleDelete={(id) => handleDelete(id)}/>
+                          <ContactList data={props.data} handleDelete={(id) => handleDelete(id)} search={props.search} />
                         </Grid>
                         </>
                         
@@ -35,9 +37,9 @@ const Content = (props) =>{
                
                  {
                     !props.handleSide &&
-                    <Grid item  lg={12}>
+                    <Grid item  lg={12} >
                     
-                        <ContactList data={props.data} handleDelete={(id) => handleDelete(id)}/>
+                        <ContactList data={props.data} handleDelete={(id) => handleDelete(id)} search={props.search} />
                     </Grid>
                  }
             </Grid>

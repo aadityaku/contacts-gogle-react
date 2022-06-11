@@ -21,7 +21,7 @@ const Side = (props) => {
     
     const handleListItemClick = (event, index) => {
       setSelectedIndex(index);
-      props.handleModel();
+      
     };
     const arro = (event,index) =>{
             setSelectedIndex(index);
@@ -31,11 +31,15 @@ const Side = (props) => {
             setSelectedIndex(index);
             setSelect(false);
     }
+    const handleModel = (event,index) =>{
+      setSelectedIndex(index);
+      props.handleModel();
+    }
    
     return (
       <Box sx={{ maxWidth: 350, bgcolor: 'background.paper' }} position="fixed">
         <List component="nav" aria-label="main mailbox folders">
-          <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)} sx={{borderWidth:1,borderRadius:50,margin:1, marginRight:8, backgroundColor:"#eeeeee"}}>
+          <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleModel(event, 0)} sx={{borderWidth:1,borderRadius:50,margin:1, marginRight:8, backgroundColor:"#eeeeee"}}>
             <ListItemIcon>
               <AddIcon sx={{marginLeft:1}}/>
             </ListItemIcon>

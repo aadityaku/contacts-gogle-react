@@ -12,8 +12,13 @@ function App() {
   const [job,setJob] = useState("");
   const [data,setData] = useState(ContactData);
   const [icon,setIcon] = useState(true);
-  const HandleSubmit = () =>{
+  
+  const [searchData,setSearchData] = useState('');
+   const HandleSubmit = () =>{
+   
     setData((item)=>([...item,{id:data.length+1,name:name,email:email,job:job,contact:contact}]));
+   
+    
     setName('');
     setEmail('');
     setContact('');
@@ -22,8 +27,12 @@ function App() {
     
     
   }
+  
+  
    const handleDelete = (id)=>{
+
       let newArray = data.filter((item) => item.id !== id);
+      
       setData(newArray);
    }
 
@@ -46,9 +55,14 @@ function App() {
   const handleClose = () =>{
     setOpen(false);
   }
+
+  const handleSearch = (search) =>{    
+    setSearchData(search);
+   
+  }
   return (
     <>
-     <Header handleIcon={()=>handleIcon()}/>
+     <Header handleIcon={()=>handleIcon()} search={(search) => handleSearch(search)}/>
        <Fab onClick={handleOpen} color="primary" aria-label="add" sx={{position:"absolute",right:40,bottom:20}}>
           <AddIcon />
        </Fab>
@@ -66,7 +80,7 @@ function App() {
            
          </DialogActions>
        </Dialog>
-    <Content data={data} handleDelete={(id) => handleDelete(id)} handleSide={icon} handleModel={() => handleOpen()}/>
+    <Content data={data} search={searchData} handleDelete={(id) => handleDelete(id)} handleSide={icon} handleModel={() => handleOpen()}/>
   
     </>
    
